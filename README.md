@@ -4,7 +4,36 @@
 
 An autonomous AI-powered system for detecting, analyzing, and fixing data quality issues in energy consumption datasets using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG).
 
+## 📸 Screenshots
 
+### Dashboard Overview
+![Dashboard](screenshots/01_dashboard_overview.png)
+*Clean, professional interface with 5 main tabs for different analysis stages*
+
+### Data Quality Analysis
+![Quality Analysis](screenshots/03_quality_analysis_summary.png)
+*Automated detection of 6 types of data quality issues*
+
+![Visualizations](screenshots/04_quality_analysis_charts.png)
+*Interactive charts showing issue distribution and consumption patterns*
+
+### AI-Powered Insights
+![LLM Analysis](screenshots/05_ai_insights_report.png)
+*LLM generates comprehensive quality assessment with scoring and root cause analysis*
+
+![Action Plan](screenshots/06_ai_prioritized_actions.png)
+*Prioritized recommendations ranked by severity and effort*
+
+### Automated Data Cleaning
+![Cleaning Summary](screenshots/07_data_cleaning_summary.png)
+*Detailed log of all cleaning operations performed*
+
+![Before/After](screenshots/08_data_cleaning_before_after.png)
+*Statistical comparison showing data quality improvement*
+
+### Interactive Q&A
+![Q&A](screenshots/09_interactive_qa.png)
+*Natural language conversation with LLM about your data*
 
 \## 🎯 Project Overview
 
