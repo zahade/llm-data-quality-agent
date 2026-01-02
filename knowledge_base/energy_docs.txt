@@ -1,0 +1,61 @@
+# Energy Data Quality Guidelines
+
+## Valid Consumption Values
+- Residential: 0-50 kWh/hour typical
+- Commercial: 0-500 kWh/hour typical  
+- Industrial: 0-5000 kWh/hour typical
+- Negative values are INVALID (consumption cannot be negative)
+- Zero values may indicate meter offline or non-operational periods
+
+## Common Data Quality Issues
+
+### Missing Values
+Causes: Meter communication failures, transmission errors, power outages
+Solutions:
+- Short gaps (<2 hours): Forward-fill from last known value
+- Medium gaps (2-6 hours): Linear interpolation
+- Long gaps (>6 hours): Mark as unreliable, may need manual inspection
+- NEVER backfill consumption data (violates causality)
+
+### Outliers
+Definition: Values >3 standard deviations from mean
+Causes:
+- Equipment startup (sudden spike)
+- Data logging errors  
+- Unit conversion mistakes (Wh recorded as kWh = 1000x error)
+- Meter malfunction
+Detection: Compare with temperature, check equipment logs
+Solution: Cap at 3*std or replace with median
+
+### Unit Inconsistencies
+Standard: kWh (kilowatt-hours)
+Common error: Wh (watt-hours) as kWh
+Detection: Values exactly 1000x expected range
+Solution: Divide by 1000
+
+### Duplicate Timestamps
+Causes: Database sync issues, daylight saving time transitions
+Solution: Keep first occurrence, remove rest
+
+### Negative Values
+These are ALWAYS invalid for consumption data
+Causes: Meter errors, data corruption, incorrect sensor calibration
+Solution: Remove or replace with NaN
+
+### Zero Values
+May be valid (building closed) or invalid (meter offline)
+Validation: Check if sustained (>4 hours) or isolated
+Solution: Validate against building schedule
+
+## Seasonal Patterns
+- Summer (Jun-Aug): Higher due to cooling
+- Winter (Dec-Feb): Higher due to heating
+- Spring/Fall: Lower baseline
+- Sudden breaks in patterns indicate quality issues
+
+## Data Validation Rules
+1. Consumption ≥ 0 (no negative values)
+2. Sequential timestamps with ≤1 hour gaps
+3. Values within 3σ unless justified
+4. No duplicate timestamps
+5. Temperature correlation check

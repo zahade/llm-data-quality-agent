@@ -1,0 +1,42 @@
+An autonomous AI agent that:
+
+Analyzes energy consumption datasets for data quality issues
+Detects anomalies, missing values, outliers, and inconsistencies
+Uses open-source LLMs (locally or free APIs) to reason through problems
+Generates natural language explanations and fixes
+Creates an automated workflow that requires minimal human intervention
+
+Core Components:
+Component 1: Anomaly Detection Engine
+
+Analyzes time-series energy data
+Identifies statistical outliers
+Detects missing values and duplicates
+Flags inconsistent patterns (e.g., negative consumption)
+
+Component 2: LLM Reasoning Agent
+
+Uses free/open-source LLM to explain anomalies
+Generates human-readable insights
+Suggests data cleaning strategies
+Provides step-by-step reasoning
+
+Component 3: RAG System (Retrieval-Augmented Generation)
+
+Vector database of energy data documentation
+LLM queries documentation for context
+Provides domain-specific cleaning recommendations
+
+Component 4: Automated Cleaning Workflow
+
+Agent generates Python code to fix issues
+Executes cleaning operations
+Logs all changes for audit trail
+Creates before/after comparison reports
+
+Component 5: Simple Web Interface
+
+Upload CSV files
+View analysis results
+See LLM reasoning
+Download cleaned data

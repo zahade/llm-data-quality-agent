@@ -1,0 +1,11 @@
+venv/
+.env
+__pycache__/
+*.pyc
+.streamlit/
+*.csv
+data/raw/*
+data/processed/*
+!data/sample/
+chroma_db/
+.DS_Store
